@@ -73,33 +73,35 @@ const CsvUploader = () => {
   return (
     <div className="bg-white">
       <h2 className="bg-blue-400 font-bold text-white text-3xl flex justify-center items-center max-h-max p-4">Upload CSV File</h2>
-      <div className="flex flex-col justify-center items-center mt-4 max-h-max p-4">
-        <input type="file" accept=".csv" onChange={handleFileChange} className="mb-4" />
+      <div className='bg-amber-400 w-[400px] h-[400px] flex justify-center items-center text-center ml-[35rem] shadow-2xl p-6  mt-7 rounded-3xl'>
+      <div className="flex flex-col justify-center items-center mt-4 max-h-max p-4  ">
+        <input type="file" accept=".csv" onChange={handleFileChange} className="mb-4 ml-16" />
         <input
           type="text"
           placeholder="Base Price"
           value={basePrice}
           onChange={(e) => setBasePrice(e.target.value)}
-          className="mb-2 p-2 border border-gray-300 rounded"
+          className="mb-3 p-2 border border-gray-300 rounded-xl shadow-2xl bg-blue-300 text-white font-bold placeholder-white"
         />
         <input
           type="text"
           placeholder="Price Per Credit Line"
           value={pricePerCreditLine}
           onChange={(e) => setPricePerCreditLine(e.target.value)}
-          className="mb-2 p-2 border border-gray-300 rounded"
+          className="mb-3 p-2 border border-gray-300 rounded-xl shadow-2xl bg-blue-300 text-white font-bold placeholder-white"
         />
         <input
           type="text"
           placeholder="Price Per Credit Score Point"
           value={pricePerCreditScorePoint}
           onChange={(e) => setPricePerCreditScorePoint(e.target.value)}
-          className="mb-2 p-2 border border-gray-300 rounded"
+          className="mb-3 p-2 border border-gray-300 rounded-xl shadow-2xl bg-blue-300 text-white font-bold placeholder-white"
         />
         <button onClick={handleUpload} className="bg-green-400 rounded-lg p-4 h-14 w-20 font-bold text-white flex justify-center items-center">Upload</button>
       </div>
+      </div>
       <div className="flex flex-col justify-center items-center">
-        {uploadProgress > 0 && <p className="text-xl font-semibold">Upload Progress: {uploadProgress}%</p>}
+        {uploadProgress > 0 && <p className="text-xl font-semibold mt-4">Upload Progress: {uploadProgress}%</p>}
         <div className="text-xl font-semibold">
           {message && <p>{message}</p>}
         </div>
