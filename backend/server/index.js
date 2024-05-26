@@ -1,4 +1,3 @@
-// backend/index.js
 const express = require('express');
 const multer = require('multer');
 const csv = require('csv-parser');
@@ -10,13 +9,13 @@ const app = express();
 app.use(cors({ origin: '*' }));
 const port = 5000;
 
-// Setup multer for file handling
-const upload = multer({ dest: 'uploads/' });
-
 app.use(express.json());
 
 let results = [];
 let subscriptionPrices = [];
+
+// Setup multer for file handling
+const upload = multer({ dest: 'uploads/' });
 
 app.post('/upload', upload.single('file'), (req, res) => {
   const file = req.file;
@@ -51,12 +50,12 @@ app.post('/upload', upload.single('file'), (req, res) => {
       fs.unlinkSync(file.path); // Clean up the uploaded file
 
       // Calculate total number of pages
-      const totalPages = Math.ceil(results.length / 1500);
+      const totalPages = Math.ceil(results.length / 100);
 
       res.send({
         message: 'File uploaded and processed successfully',
-        data: results.slice(0, 1500),
-        subscriptionPrices: subscriptionPrices.slice(0, 1500),
+        data: results.slice(0, 100),
+        subscriptionPrices: subscriptionPrices.slice(0, 100),
         totalPages,
       });
     })
@@ -67,7 +66,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 });
 
 app.get('/data', (req, res) => {
-  const { page = 1, limit = 1500 } = req.query;
+  const { page = 1, limit = 100 } = req.query;
 
   // Calculate offset
   const offset = (page - 1) * limit;

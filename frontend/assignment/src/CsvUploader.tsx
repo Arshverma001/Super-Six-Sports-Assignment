@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ReactPaginate from 'react-paginate';
 
@@ -15,7 +15,11 @@ const CsvUploader = () => {
   const [pricePerCreditLine, setPricePerCreditLine] = useState('');
   const [pricePerCreditScorePoint, setPricePerCreditScorePoint] = useState('');
 
-  const itemsPerPage = 1500; // Number of items per page
+  const itemsPerPage = 100;
+
+  useEffect(() => {
+    fetchData(currentPage + 1);
+  }, [currentPage]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -47,7 +51,7 @@ const CsvUploader = () => {
       setUploadedData(response.data.data);
       setSubscriptionPrices(response.data.subscriptionPrices);
       setPageCount(response.data.totalPages);
-      setCurrentPage(0); // Reset to first page
+      setCurrentPage(0);
     } catch (error) {
       console.error(error);
       setMessage('Failed to upload file');
@@ -55,12 +59,13 @@ const CsvUploader = () => {
   };
 
   const handlePageClick = async (data: { selected: number }) => {
-    const selectedPage = data.selected;
-    setCurrentPage(selectedPage);
+    setCurrentPage(data.selected);
+  };
 
+  const fetchData = async (page: number) => {
     try {
       const response = await axios.get('http://localhost:5000/data', {
-        params: { page: selectedPage + 1, limit: itemsPerPage },
+        params: { page, limit: itemsPerPage },
       });
 
       setUploadedData(response.data.data);
@@ -72,7 +77,7 @@ const CsvUploader = () => {
 
   return (
     <div className="bg-white">
-      <h2 className="bg-blue-400 font-bold text-white text-3xl flex justify-center items-center max-h-max p-4">Upload CSV File</h2>
+      <h2 className="bg-blue-400 font-bold text-white text-3xl flex justify-center items-center max-h-max p-4">Subscription Pricing Formula</h2>
       <div className='bg-amber-400 w-[400px] h-[400px] flex justify-center items-center text-center ml-[35rem] shadow-2xl p-6  mt-7 rounded-3xl'>
       <div className="flex flex-col justify-center items-center mt-4 max-h-max p-4  ">
         <input type="file" accept=".csv" onChange={handleFileChange} className="mb-4 ml-16" />
@@ -97,7 +102,7 @@ const CsvUploader = () => {
           onChange={(e) => setPricePerCreditScorePoint(e.target.value)}
           className="mb-3 p-2 border border-gray-300 rounded-xl shadow-2xl bg-blue-300 text-white font-bold placeholder-white"
         />
-        <button onClick={handleUpload} className="bg-green-400 rounded-lg p-4 h-14 w-20 font-bold text-white flex justify-center items-center">Upload</button>
+        <button onClick={handleUpload} className="bg-green-400 rounded-lg p-4 h-14 w-20 font-bold text-white  flex justify-center items-center">Upload</button>
       </div>
       </div>
       <div className="flex flex-col justify-center items-center">
@@ -108,22 +113,22 @@ const CsvUploader = () => {
       </div>
       {uploadedData.length > 0 && (
         <div className="flex flex-col justify-center items-center mt-28 font-bold">
-          <table className="min-w-full divide-y divide-gray-200">
+          <table className="min-w-full divide-y divide-gray-200 ">
             <thead>
               <tr>
                 {Object.keys(uploadedData[0]).map((key) => (
-                  <th key={key} className="px-6 py-3 text-center bg-gray-50 text-lg leading-4 font-medium text-gray-500 uppercase tracking-wider">{key}</th>
+                  <th key={key} className="px-6 py-3 text-center bg-amber-400 text-lg leading-4 font-medium text-white uppercase tracking-wider">{key}</th>
                 ))}
-                <th className="px-6 py-3 bg-gray-50 text-left text-lg leading-4 font-medium text-gray-500 uppercase tracking-wider">Subscription Price</th>
+                <th className="px-6 py-3 bg-amber-400 text-left text-lg leading-4 font-medium text-white uppercase tracking-wider">Subscription Price</th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
               {uploadedData.map((row, index) => (
-                <tr key={index} className="py-4 text-gray-700 text-center whitespace-no-wrap">
+                <tr key={index} className="py-4 text-white bg-blue-300 text-center whitespace-no-wrap">
                   {Object.values(row).map((value, i) => (
                     <td key={i}>{value}</td>
                   ))}
-                  <td className="py-4 text-gray-700 whitespace-no-wrap">{subscriptionPrices[index]}</td>
+                  <td className="py-4 text-white bg-blue-300 whitespace-no-wrap">{subscriptionPrices[index]}</td>
                 </tr>
               ))}
             </tbody>

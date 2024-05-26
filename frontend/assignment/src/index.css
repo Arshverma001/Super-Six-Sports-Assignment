@@ -15,12 +15,12 @@
 .page-link {
   padding: 0.5rem 1rem;
   border: 1px solid #ddd;
-  color: #007bff;
+  color: #66BB6A;
   cursor: pointer;
 }
 
 .page-item.active .page-link {
-  background-color: #007bff;
+  background-color: #66BB6A;
   color: white;
-  border: 1px solid #007bff;
+  border: 1px solid #66BB6A;
 }
