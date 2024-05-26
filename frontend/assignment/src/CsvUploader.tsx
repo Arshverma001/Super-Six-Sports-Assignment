@@ -20,7 +20,7 @@ const CsvUploader = () => {
     fetchData(currentPage + 1);
   }, [currentPage]);
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e:any) => {
     if (e.target.files) {
       setFile(e.target.files[0]);
     }
@@ -44,19 +44,19 @@ const CsvUploader = () => {
       });
 
       setMessage(response.data.message);
-      setCurrentPage(0); // Reset to the first page
-      fetchData(1); // Fetch data for the first page after upload
+      setCurrentPage(0); 
+      fetchData(1); 
     } catch (error) {
       console.error(error);
       setMessage('Failed to upload file');
     }
   };
 
-  const handlePageClick = (data) => {
+  const handlePageClick = (data:any) => {
     setCurrentPage(data.selected);
   };
 
-  const fetchData = async (page) => {
+  const fetchData = async (page:any) => {
     setIsLoading(true);
     try {
       const response = await axios.get('http://localhost:5000/data', {
@@ -75,7 +75,7 @@ const CsvUploader = () => {
 
   return (
     <div className="bg-white">
-      <h2 className="bg-blue-400 font-bold text-white text-3xl flex justify-center items-center max-h-max p-4">Subscription Pricing Formula</h2>
+      <h2 className="bg-blue-400 font-bold text-white text-3xl flex justify-center items-center max-h-max p-4">Subscription Pricing Calulator</h2>
       <div className='bg-amber-400 w-[400px] h-[400px] flex justify-center items-center text-center ml-[35rem] shadow-2xl p-6  mt-7 rounded-3xl'>
         <div className="flex flex-col justify-center items-center mt-4 max-h-max p-4  ">
           <input type="file" accept=".csv" onChange={handleFileChange} className="mb-4 ml-16" />
@@ -143,7 +143,7 @@ const CsvUploader = () => {
               breakClassName={'break-me'}
               pageCount={totalPages}
               marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
+              pageRangeDisplayed={0}
               onPageChange={handlePageClick}
               containerClassName={'pagination'}
               subContainerClassName={'pages pagination'}

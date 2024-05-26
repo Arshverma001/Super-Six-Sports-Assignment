@@ -10,8 +10,8 @@ const port = 5000;
 
 app.use(express.json());
 
-let dataCache = []; // Store parsed CSV data
-let subscriptionPricesCache = []; // Store calculated subscription prices
+let dataCache = []; 
+let subscriptionPricesCache = []; 
 
 const upload = multer({ dest: 'uploads/' });
 
