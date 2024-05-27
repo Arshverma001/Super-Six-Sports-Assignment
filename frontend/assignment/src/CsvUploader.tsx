@@ -17,10 +17,10 @@ const CsvUploader = () => {
   const itemsPerPage = 100;
 
   useEffect(() => {
-    fetchData(currentPage + 1);
+    fetchData(currentPage + 1); // Fetch data for the current page, adjusted for 1-based index
   }, [currentPage]);
 
-  const handleFileChange = (e:any) => {
+  const handleFileChange = (e) => {
     if (e.target.files) {
       setFile(e.target.files[0]);
     }
@@ -44,19 +44,19 @@ const CsvUploader = () => {
       });
 
       setMessage(response.data.message);
-      setCurrentPage(0); 
-      fetchData(1); 
+      setCurrentPage(0); // Reset to the first page
+      fetchData(1); // Fetch the first page of data after upload
     } catch (error) {
       console.error(error);
       setMessage('Failed to upload file');
     }
   };
 
-  const handlePageClick = (data:any) => {
+  const handlePageClick = (data) => {
     setCurrentPage(data.selected);
   };
 
-  const fetchData = async (page:any) => {
+  const fetchData = async (page) => {
     setIsLoading(true);
     try {
       const response = await axios.get('http://localhost:5000/data', {
@@ -75,9 +75,11 @@ const CsvUploader = () => {
 
   return (
     <div className="bg-white">
-      <h2 className="bg-blue-400 font-bold text-white text-3xl flex justify-center items-center max-h-max p-4">Subscription Pricing Calulator</h2>
-      <div className='bg-amber-400 w-[400px] h-[400px] flex justify-center items-center text-center ml-[35rem] shadow-2xl p-6  mt-7 rounded-3xl'>
-        <div className="flex flex-col justify-center items-center mt-4 max-h-max p-4  ">
+      <h2 className="bg-blue-400 font-bold text-white text-3xl flex justify-center items-center max-h-max p-4">
+        Subscription Pricing Calculator
+      </h2>
+      <div className='bg-amber-400 w-[400px] h-[400px] flex justify-center items-center text-center ml-[35rem] shadow-2xl p-6 mt-7 rounded-3xl'>
+        <div className="flex flex-col justify-center items-center mt-4 max-h-max p-4">
           <input type="file" accept=".csv" onChange={handleFileChange} className="mb-4 ml-16" />
           <input
             type="text"
@@ -100,7 +102,9 @@ const CsvUploader = () => {
             onChange={(e) => setPricePerCreditScorePoint(e.target.value)}
             className="mb-3 p-2 border border-gray-300 rounded-xl shadow-2xl bg-blue-300 text-white font-bold placeholder-white"
           />
-          <button onClick={handleUpload} className="bg-green-400 rounded-lg p-4 h-14 w-20 font-bold text-white  flex justify-center items-center">Upload</button>
+          <button onClick={handleUpload} className="bg-green-400 rounded-lg p-4 h-14 w-20 font-bold text-white flex justify-center items-center">
+            Upload
+          </button>
         </div>
       </div>
       <div className="flex flex-col justify-center items-center">
@@ -116,13 +120,17 @@ const CsvUploader = () => {
       ) : (
         uploadedData.length > 0 && (
           <div className="flex flex-col justify-center items-center mt-28 font-bold">
-            <table className="min-w-full divide-y divide-gray-200 ">
+            <table className="min-w-full divide-y divide-gray-200">
               <thead>
                 <tr>
                   {Object.keys(uploadedData[0]).map((key) => (
-                    <th key={key} className="px-6 py-3 text-center bg-amber-400 text-lg leading-4 font-medium text-white uppercase tracking-wider">{key}</th>
+                    <th key={key} className="px-6 py-3 text-center bg-amber-400 text-lg leading-4 font-medium text-white uppercase tracking-wider">
+                      {key}
+                    </th>
                   ))}
-                  <th className="px-6 py-3 bg-amber-400 text-left text-lg leading-4 font-medium text-white uppercase tracking-wider">Subscription Price</th>
+                  <th className="px-6 py-3 bg-amber-400 text-left text-lg leading-4 font-medium text-white uppercase tracking-wider">
+                    Subscription Price
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -131,30 +139,31 @@ const CsvUploader = () => {
                     {Object.values(row).map((value, i) => (
                       <td key={i}>{value}</td>
                     ))}
-                    <td className="py-4 text-white bg-blue-300 whitespace-no-wrap">{subscriptionPrices[index]}</td>
+                    <td className="py-4 text-white bg-blue-300 whitespace-no-wrap">
+                      {subscriptionPrices[index]}
+                    </td>
                   </tr>
                 ))}
               </tbody>
             </table>
             <ReactPaginate
-              previousLabel={'Previous'}
-              nextLabel={'Next'}
-              breakLabel={'...'}
-              breakClassName={'break-me'}
-              pageCount={totalPages}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={0}
-              onPageChange={handlePageClick}
-              containerClassName={'pagination'}
-              subContainerClassName={'pages pagination'}
-              activeClassName={'active'}
-              pageClassName={'page-item'}
-              pageLinkClassName={'page-link'}
-              previousClassName={'page-item'}
-              previousLinkClassName={'page-link'}
-              nextClassName={'page-item'}
-              nextLinkClassName={'page-link'}
-            />
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={10}
+        pageCount={totalPages}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+        containerClassName={'pagination'}
+        subContainerClassName={'pages pagination'}
+        activeClassName={'active'}
+        pageClassName={'page-item'}
+        pageLinkClassName={'page-link'}
+        previousClassName={'page-item'}
+        previousLinkClassName={'page-link'}
+        nextClassName={'page-item'}
+        nextLinkClassName={'page-link'}
+      />
           </div>
         )
       )}
@@ -162,4 +171,10 @@ const CsvUploader = () => {
   );
 };
 
+  
+
+
+
+
 export default CsvUploader;
+

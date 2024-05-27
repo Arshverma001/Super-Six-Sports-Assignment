@@ -49,7 +49,8 @@ app.post('/upload', upload.single('file'), (req, res) => {
 });
 
 app.get('/data', (req, res) => {
-  const { page = 1, limit = 100 } = req.query;
+  const page = parseInt(req.query.page, 10) || 1;
+  const limit = parseInt(req.query.limit, 10) || 100;
   const offset = (page - 1) * limit;
   const data = dataCache.slice(offset, offset + limit);
   const subscriptionPrices = subscriptionPricesCache.slice(offset, offset + limit);
