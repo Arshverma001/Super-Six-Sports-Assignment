@@ -48,7 +48,8 @@ Here are the steps on how to use the Subscription Pricing Calculator.
 
 - **Example Response:**
   
-![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/c7a3b5d6-952d-413f-8379-6f7dedb5c206)
+![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/92633026-11ea-4ab4-9a7e-6a66134a50ad)
+
 
 
 ### 2. Click on the file upload button and select the CSV file containing the required data, such as credit score and credit line information, from your local storage.
@@ -56,7 +57,8 @@ Here are the steps on how to use the Subscription Pricing Calculator.
 
 - **Example Response:**
   
-![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/683443de-11ff-4e5c-966e-f87f095d47b8)
+![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/72d23b91-0da5-4fc1-844f-232c5a6df090)
+
 
 
 ### 3. Input the pricing parameters required for subscription value calculation. These typically include the base price, price per credit line, and price per credit score point.
@@ -64,18 +66,20 @@ Here are the steps on how to use the Subscription Pricing Calculator.
 
 - **Example Response:**
   
-![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/dfbf5dfe-4c30-45c0-8db9-166d9f0d040a)
+![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/d4ee4d05-a5f9-4448-9a7f-444b2fb84aa5)
 
 
-### 4. Click on the Upload Button and wait for the data to load.
+
+### 4. Click on the Upload Button and wait for the data to load.Now we can see the required Subscription value.
 
 
 - **Example Response:**
   
-![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/e195e940-1963-4536-977c-3cccbec2629f)
+![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/3c4164fd-a40c-4092-9537-6153887ec0d7)
 
 
-![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/4ac08a3f-42f6-46ea-8311-14769d5b83fe)
+![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/e08a2b2b-a2e4-44f5-aaf8-21b1a6abf905)
+
 
 
 ### 5. If the dataset is large and spans multiple pages, use the pagination controls provided in the interface to navigate through different pages of data.
@@ -83,12 +87,18 @@ Here are the steps on how to use the Subscription Pricing Calculator.
   
 - **Example Response:**
   
- ![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/8bcda48e-e9cb-4216-89f4-52488b78afa5)
+![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/d7db3021-0686-4f89-8bb0-fea64a0c0ee4)
+
  
- ![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/ca5b5c06-b6fc-48fd-8471-82389d400bd2)
+![image](https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/0301bda6-9ef4-4548-adc3-abee88658f46)
+
 
 
 ## Features and Functionalities 
-![image](https://github.com/Arshverma001/Simple-REST--API-using-go-and-gofr/assets/87807771/f1a590e4-c3fd-46cf-8743-55d2e0846872)
+
+
+
+
+https://github.com/Arshverma001/Super-Six-Sports-Assignment/assets/87807771/73708926-ef75-4512-9110-8f903d544ed2
 
 
