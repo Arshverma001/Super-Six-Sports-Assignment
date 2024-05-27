@@ -20,7 +20,7 @@ const CsvUploader = () => {
     fetchData(currentPage + 1); // Fetch data for the current page, adjusted for 1-based index
   }, [currentPage]);
 
-  const handleFileChange = (e) => {
+  const handleFileChange = (e:any) => {
     if (e.target.files) {
       setFile(e.target.files[0]);
     }
@@ -52,11 +52,11 @@ const CsvUploader = () => {
     }
   };
 
-  const handlePageClick = (data) => {
+  const handlePageClick = (data:any) => {
     setCurrentPage(data.selected);
   };
 
-  const fetchData = async (page) => {
+  const fetchData = async (page:any) => {
     setIsLoading(true);
     try {
       const response = await axios.get('http://localhost:5000/data', {
