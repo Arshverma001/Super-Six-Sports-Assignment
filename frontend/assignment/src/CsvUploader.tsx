@@ -124,22 +124,22 @@ const CsvUploader = () => {
               <thead>
                 <tr>
                   {Object.keys(uploadedData[0]).map((key) => (
-                    <th key={key} className="px-6 py-3 text-center bg-amber-400 text-lg leading-4 font-medium text-white uppercase tracking-wider">
+                    <th key={key} className="px-6 py-3 text-center bg-amber-400 text-lg leading-4 font-bold text-white uppercase tracking-wider">
                       {key}
                     </th>
                   ))}
-                  <th className="px-6 py-3 bg-amber-400 text-left text-lg leading-4 font-medium text-white uppercase tracking-wider">
+                  <th className="px-6 py-3 bg-amber-400 text-left text-lg leading-4 font-bold text-white uppercase tracking-wider">
                     Subscription Price
                   </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
                 {uploadedData.map((row, index) => (
-                  <tr key={index} className="py-4 text-white bg-blue-300 text-center whitespace-no-wrap">
+                  <tr key={index} className="py-4 text-white bg-blue-300 font-semibold text-center whitespace-no-wrap">
                     {Object.values(row).map((value, i) => (
                       <td key={i}>{value}</td>
                     ))}
-                    <td className="py-4 text-white bg-blue-300 whitespace-no-wrap">
+                    <td className="py-4 text-white font-semibold bg-blue-300 whitespace-no-wrap">
                       {subscriptionPrices[index]}
                     </td>
                   </tr>
